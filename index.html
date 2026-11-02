@@ -2,7 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f3ede3">
+<meta name="format-detection" content="telephone=no">
 <title>POD 男装视觉展示手册 · 展示方式拆解</title>
 <style>
 *{box-sizing:border-box}
@@ -215,9 +217,139 @@ footer{padding:34px 54px 0;font-family:var(--mono);font-size:9.5px;color:var(--m
   .contact{padding:20px}
   .contact .qr img{width:108px}
 }
+
+/* ================= MOBILE / 手机端适配 ================= */
+body{-webkit-text-size-adjust:100%;overflow-x:hidden}
+.mbar,.mask,.totop{display:none}
+
+@media(max-width:1080px){
+  /* 侧栏改为抽屉式导航 */
+  aside{display:block;position:fixed;top:0;left:0;bottom:0;height:100%;width:286px;max-width:86vw;
+    flex:none;transform:translateX(-103%);transition:transform .28s cubic-bezier(.2,.7,.3,1);
+    z-index:210;background:#f3ede3;box-shadow:0 0 48px rgba(0,0,0,.28);overflow-y:auto;
+    -webkit-overflow-scrolling:touch;padding-bottom:60px}
+  body.nav-open aside{transform:translateX(0)}
+  body.nav-open{overflow:hidden}
+  .mask{display:block;position:fixed;inset:0;background:rgba(20,16,13,.5);z-index:200;opacity:0;
+    pointer-events:none;transition:opacity .28s}
+  body.nav-open .mask{opacity:1;pointer-events:auto}
+  .mbar{display:flex;position:sticky;top:0;z-index:120;align-items:center;justify-content:space-between;
+    gap:10px;padding:9px 16px;background:rgba(243,237,227,.97);-webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .mbar .mk{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.25;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mbar .mk em{display:block;font-style:normal;font-family:var(--mono);font-size:8px;
+    letter-spacing:.16em;color:var(--accent);margin-top:3px}
+  .mbtn{flex:none;display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;
+    letter-spacing:.08em;padding:9px 12px;border:1px solid var(--ink);background:none;color:var(--ink);
+    border-radius:2px;cursor:pointer;line-height:1}
+  .mbtn:active{background:var(--ink);color:#f7f2e8}
+  .toolbar{top:52px}
+  aside nav .g>a,aside nav .gtop>a{font-size:13.5px;padding:11px 8px}
+  aside nav .subs a{font-size:12.5px;padding:9px 10px}
+  section.l1,.sub,#board{scroll-margin-top:104px}
+}
+
+@media(max-width:640px){
+  header.hero,section.l1,.toolbar,.board,footer{padding-left:16px;padding-right:16px}
+  header.hero{padding-top:26px;padding-bottom:26px}
+  h1{font-size:25px;line-height:1.26}
+  h1 small{font-size:9.5px;letter-spacing:.14em;margin-top:10px}
+  .lede{font-size:13px;line-height:1.85;margin-top:14px}
+  .stats{margin-top:20px}
+  .stat{padding:10px 18px 0 0;margin-right:18px;border-right:0}
+  .stat b{font-size:22px}.stat span{font-size:8.5px;letter-spacing:.1em}
+  .toolbar{padding:8px 16px;gap:9px}
+  .search{flex:1 1 100%;max-width:none;min-width:0;padding-bottom:5px}
+  .chips{flex:1 1 100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;padding:7px 12px;font-size:10.5px}
+  .hint{margin-left:0;font-size:9px}
+  .board{padding-top:26px;padding-bottom:30px}
+  .boardhead{margin-bottom:18px}
+  .boardhead h2{font-size:20px;line-height:1.35}
+  .boardhead p{font-size:12px;line-height:1.8}
+  .bgrid{grid-template-columns:1fr 1fr;gap:10px}
+  .btile{padding:13px 12px 12px}
+  .btile .bn{font-size:19px}
+  .btile h3{font-size:13.5px;margin-top:7px}
+  .btile .be{font-size:7px;letter-spacing:.1em}
+  .btile .bd{font-size:10.5px;line-height:1.7;-webkit-line-clamp:3;margin-top:7px}
+  .btile .bf{font-size:8px;margin-top:10px;gap:4px}
+  .soon-tag{font-size:7.5px;padding:2px 6px}
+  .contact{flex-direction:column;align-items:stretch;padding:18px;gap:18px}
+  .contact h3{font-size:17px;line-height:1.4}
+  .contact .cnote{font-size:10.5px}
+  .contact .qr{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .contact .qr img{width:100%;max-width:210px;height:auto}
+  .contact .qr figcaption{font-size:9px}
+  .l1head{gap:12px;padding:28px 0 18px;flex-wrap:wrap}
+  .l1num{font-size:36px}
+  .l1head h2{font-size:20px;line-height:1.32}
+  .l1head .en{font-size:8.5px;letter-spacing:.16em}
+  .l1head p{font-size:12px;line-height:1.85;margin-top:9px}
+  .soonbox{padding:20px 16px}
+  .subhead{padding:13px 0;gap:8px}
+  .subhead h3{font-size:15.5px}
+  .subhead .cnt{font-size:9px}
+  .subhead .txt{flex:1 1 100%;min-width:0;font-size:11px;line-height:1.8;padding-left:0}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .shot{aspect-ratio:4/3}
+  .shot .fill{display:none}
+  .body{padding:12px 13px 13px;gap:8px}
+  .body h4{font-size:14px}
+  .feats li{font-size:12px;line-height:1.72}
+  .meta div{font-size:11px}
+  .meta dt{flex:0 0 46px}
+  .prompt>summary{padding:11px 2px;font-size:11.5px}
+  .prompt .pv p{font-size:12px;line-height:1.78}
+  .prompt .pv.en p{font-size:11px;line-height:1.7}
+  .cp{padding:5px 10px;font-size:9px}
+  .cp2{padding:3px 0;font-size:9.5px}
+  .crow span{min-width:58px;font-size:8.5px}
+  .crow b{font-size:13px}
+  .crow button{padding:6px 12px;font-size:9.5px}
+  footer{font-size:9px;line-height:1.9;padding-bottom:28px}
+  .lb{padding:14px 12px}
+  .lb figure{max-width:100%;max-height:88vh;gap:8px}
+  .lb img{max-height:68vh}
+  .lb .x{top:10px;right:10px;padding:7px 12px;font-size:13px}
+  .lb .nav.p{left:8px;top:auto;bottom:16px}
+  .lb .nav.n{right:8px;top:auto;bottom:16px}
+  .lb .nav{padding:7px 12px}
+  .lb figcaption{font-size:11.5px;gap:8px;padding-bottom:46px}
+  .lb figcaption b{font-size:13.5px}
+  .totop{display:flex;position:fixed;right:14px;bottom:18px;z-index:150;width:44px;height:44px;
+    align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line);
+    background:rgba(251,248,242,.96);color:var(--ink);font-family:var(--mono);font-size:15px;
+    box-shadow:0 8px 22px -10px rgba(0,0,0,.55);cursor:pointer;opacity:0;pointer-events:none;
+    transition:opacity .25s;padding:0}
+  .totop.on{opacity:1;pointer-events:auto}
+}
+@media(max-width:380px){
+  .bgrid{grid-template-columns:1fr}
+  h1{font-size:22px}
+  .l1head h2{font-size:18.5px}
+}
+
+
+/* 触屏设备去掉悬停位移，避免点一下就"跳" */
+@media(hover:none){
+  .card:hover{transform:none;box-shadow:none;border-color:var(--line)}
+  .card:hover .shot .main{transform:none}
+  .btile:hover{transform:none;box-shadow:none;border-color:var(--line)}
+  .prompt>summary,.cp,.cp2,.crow button{-webkit-tap-highlight-color:transparent}
+}
 </style>
 </head>
 <body>
+<div class="mbar">
+  <div class="mk">POD 男装视觉展示手册<em>VISUAL PLAYBOOK · 7 BLOCKS</em></div>
+  <button class="mbtn" type="button" aria-label="打开目录" onclick="toggleNav(1)">☰ 目录</button>
+</div>
+<div class="mask" id="mask" onclick="toggleNav(0)"></div>
+<button class="totop" id="totop" type="button" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <div class="wrap">
 <aside>
   <div class="brandmark">VISUAL PLAYBOOK<b>POD 男装 · 展示方式</b></div>
@@ -340,8 +472,8 @@ L1.forEach(g=>{
       const f=v.f.map((x,j)=>`<li><i>${'①②③'[j]}</i><span>${x}</span></li>`).join('');
       html+=`<article class="card" data-ai="${c.ai?1:0}" data-k="${(c.t+' '+c.g.join(' ')+' '+v.fp+' '+v.f.join(' ')).toLowerCase()}">
         <figure class="shot" onclick="openLb('${c.i}','${esc(c.t)}',${c.ai?1:0})">
-          <img class="fill" src="images/${c.i}" alt="" aria-hidden="true">
-          <img class="main" loading="lazy" src="images/${c.i}" alt="${esc(c.t)}">
+          <img class="fill" src="images/${c.i}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="main" loading="lazy" decoding="async" src="images/${c.i}" alt="${esc(c.t)}">
           <span class="badge ${c.ai?'ai':''}">${c.ai?'AI 示意图':'真实参考'}</span>
           <span class="no">${g.n}.${String(si+1).padStart(2,'0')}${c.ai?' · AI':''}</span>
         </figure>
@@ -455,6 +587,19 @@ const io=new IntersectionObserver(es=>{
 subs.forEach(s=>io.observe(s));
 document.querySelectorAll('section.l1').forEach(s=>io.observe(s));
 groups[0].classList.add('on');
+
+/* ===== 手机端抽屉导航 / 回到顶部 ===== */
+function toggleNav(force){
+  const open = (force===undefined) ? !document.body.classList.contains('nav-open') : !!force;
+  document.body.classList.toggle('nav-open', open);
+}
+document.querySelectorAll('#nav a, #nav a.subs a').forEach(a=>a.addEventListener('click',()=>toggleNav(0)));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') toggleNav(0); });
+let lastY=0;
+const totop=document.getElementById('totop');
+window.addEventListener('scroll',()=>{
+  if(totop) totop.classList.toggle('on', window.scrollY>720);
+},{passive:true});
 </script>
 </body>
 </html>
